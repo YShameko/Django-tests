@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 
 url = "https://scipost.org/atom/publications/comp-ai"  # URL to XML
-file = "parsed_rss.html" # output will be saved in this file
+file = "../parsing/parsed_rss.html"  # output will be saved in this file
 output = open(file, "w", encoding="utf-8")
 out_soup = BeautifulSoup("<html> <meta charset='UTF-8'> </html>", 'html.parser')
 response = requests.get(url)
