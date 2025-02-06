@@ -8,7 +8,7 @@ def fibonacci(n, cache_mode = False):
         cached_value = r.get(n - 1)
         if cached_value is None:
             numbers_list = fibo_calc(n)
-            r.set(n, json.dumps(numbers_list))
+            r.set(n, json.dumps(numbers_list), ex=30)
         else:
             numbers_list = json.loads(cached_value)
             f_n = numbers_list[n - 2] + numbers_list[n - 3]
@@ -30,14 +30,14 @@ def fibo_calc(n):
 
 #--------------------------------------------------------------------------
 calculations_counter = 1
-for i in range(1, 10):
+for i in range(1, 50):
     sequence = fibonacci(i)
     print(sequence)
-print('Calculations were made',calculations_counter,'times.')
+print('Full calculations of the sequence were made',calculations_counter,'times.')
 print('----------------------------------------')
 
 calculations_counter = 1
-for i in range(1, 10):
+for i in range(1, 50):
     sequence = fibonacci(i, True)
     print(sequence)
-print('Now using cache calculations were made',calculations_counter,'times.')
+print('Now using cache calculations of the sequence were made',calculations_counter,'times.')
